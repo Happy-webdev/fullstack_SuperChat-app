@@ -17,7 +17,7 @@ dotenv.config();
 const PORT = process.env.PORT;
 const _dirname =path.resolve();
 
-// use for getting request access in json form  from req.body  or use express.urlencoded()
+// use for getting request access in json form  from req.body  or we can  use express.urlencoded()
 app.use(express.json());
 // allow parse the cookie
 app.use(cookieParser());
@@ -32,7 +32,7 @@ app.use(
 app.use("/api/messages", messageRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.use(express.static(path.join(_dirname, "../frontend/dist")));
 
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
